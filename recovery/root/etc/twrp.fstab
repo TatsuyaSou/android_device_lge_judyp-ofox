@@ -1,10 +1,11 @@
 # mount point	fstype	device					device2				flags
 /boot		emmc	/dev/block/bootdevice/by-name/boot					flags=slotselect
-/system		ext4	/dev/block/bootdevice/by-name/system					flags=slotselect
-/system_image	emmc	/dev/block/bootdevice/by-name/system					flags=slotselect
+/system		ext4	/dev/block/bootdevice/by-name/system					flags=slotselect;display="System";backup=1
+/system_image	emmc	/dev/block/bootdevice/by-name/system					flags=slotselect;display="System Image";backup=1;flashimg=1
 /vendor		ext4	/dev/block/bootdevice/by-name/vendor					flags=slotselect;display="Vendor";backup=1
-/vendor_image	emmc	/dev/block/bootdevice/by-name/vendor					flags=slotselect
+/vendor_image	emmc	/dev/block/bootdevice/by-name/vendor					flags=slotselect;display="Vendor Image";backup=1;flashimg=1
 /data		ext4	/dev/block/bootdevice/by-name/userdata					flags=fileencryption=ice;fsflags=discard;display="Userdata"
+/storage        ext4    /data/media/0                                                           flags=display="Internal Storage";usermrf;backup=1;fsflags="bind";removable
 /firmware	vfat	/dev/block/bootdevice/by-name/modem					flags=slotselect;display="Firmware";mounttodecrypt;fsflags=context=u:object_r:firmware_file:s0
 /misc		emmc	/dev/block/bootdevice/by-name/misc
 /modem		emmc	/dev/block/bootdevice/by-name/modem					flags=slotselect;backup=1;display="Modem"
@@ -20,4 +21,4 @@
 
 # Removable storage
 /usbstorage      vfat    /dev/block/sdg1                            /dev/block/sdg     flags=fsflags=utf8;display="OTG USB Storage";storage;wipeingui;removable
-/external_sd     auto    /dev/block/mmcblk0p1                       /dev/block/mmcblk0 flags=display="Micro SDCard";storage;wipeingui;removable;encryptable=/dev/block/bootdevice/by-name/encrypt
+/sdcard1         auto    /dev/block/mmcblk0p1                       /dev/block/mmcblk0 flags=fsflags=utf8;display="MicroSD";storage;wipeingui;removable;encryptable=/dev/block/bootdevice/by-name/encrypt
