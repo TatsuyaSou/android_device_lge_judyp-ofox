@@ -20,4 +20,4 @@ export FOX_RESET_SETTINGS=0
 export FOX_R11=1
 export OF_NO_SAMSUNG_SPECIAL=1
 
-add_lunch_combo omni_judyln-eng
+add_lunch_combo omni_judyp-eng
